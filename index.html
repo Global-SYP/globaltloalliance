@@ -70,8 +70,9 @@
 
         /* Hero */
         .hero {
-            background: linear-gradient(rgba(0, 43, 94, 0.85), rgba(0, 43, 94, 0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover;
-            height: 70vh;
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -79,18 +80,174 @@
             text-align: center;
             color: var(--text-light);
             padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            transform: scale(1.08);
+            animation: heroZoom 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.08); }
+            to   { transform: scale(1.18); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(0, 20, 60, 0.88) 0%,
+                rgba(0, 60, 100, 0.70) 50%,
+                rgba(0, 163, 224, 0.30) 100%);
+        }
+
+        /* Animated grid lines */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,163,224,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,163,224,0.07) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to   { background-position: 60px 60px; }
+        }
+
+        /* Floating orbs */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.25;
+            animation: orbFloat 8s ease-in-out infinite alternate;
+        }
+
+        .hero-orb-1 {
+            width: 400px; height: 400px;
+            background: var(--accent-cyan);
+            top: -100px; left: -100px;
+            animation-delay: 0s;
+        }
+
+        .hero-orb-2 {
+            width: 300px; height: 300px;
+            background: #0050a0;
+            bottom: -80px; right: -80px;
+            animation-delay: 3s;
+        }
+
+        .hero-orb-3 {
+            width: 200px; height: 200px;
+            background: var(--accent-cyan);
+            top: 40%; right: 15%;
+            animation-delay: 5s;
+        }
+
+        @keyframes orbFloat {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(30px, 20px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0,163,224,0.5);
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            background: rgba(0,163,224,0.08);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+        }
+
+        .hero h1 span {
+            color: var(--accent-cyan);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-bottom: 30px;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 36px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-bar {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-cyan), transparent);
+            animation: scrollPulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+            50%       { opacity: 1;   transform: scaleY(1); }
         }
 
         .btn {
@@ -333,9 +490,27 @@
 
     <!-- Hero -->
     <section class="hero">
-        <h1>Your Deep-Tech Gateway to Global Innovation</h1>
-        <p>Connecting 30+ Research Institutes and Universities in Daedeok Innopolis with Global Clusters in North America, Europe, and Japan.</p>
-        <a href="#atlas" class="btn">Explore Member TLOs</a>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">Daedeok Innopolis &nbsp;·&nbsp; Korea's Silicon Valley of Science</div>
+            <h1>Your Deep-Tech Gateway<br>to <span>Global Innovation</span></h1>
+            <p>Connecting 30+ world-class research institutes and universities in Daedeok Innopolis with global innovation clusters in North America, Europe, and Japan.</p>
+            <div class="hero-cta">
+                <a href="#atlas" class="btn">Explore Member TLOs</a>
+                <a href="#about" class="btn-outline">Learn About DGTA</a>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <div class="hero-scroll-bar"></div>
+            <span>Scroll</span>
+        </div>
     </section>
 
     <!-- Stats Banner -->
@@ -368,10 +543,13 @@
                 <p>Our mission is to provide a seamless, 'one-stop' platform that connects international partners with verified Korean deep technologies and ready-to-scale spin-offs. DGTA streamlines the process of global matching, licensing, and joint R&BD, creating sustainable innovation bridges with global clusters like Quebec and Grenoble.</p>
             </div>
             <div class="about-image">
-                <img src="https://www.innopolis.or.kr/resources/images/mps/2025/main/intro-logo.svg" alt="INNOPOLIS Korea Innovation Cluster" style="background-color:#002b5e; padding:30px; border-radius:8px;">
-                <br><br>
-                <img src="https://www.innopolis.or.kr/fileDownload?titleId=182505" alt="Daedeok Deep Connect Network Day" style="border-radius:8px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-                <p style="margin-top:10px; font-weight:bold; color:var(--primary-blue);">Daedeok Innopolis Headquarters (Secretariat)</p>
+                <div style="position:relative; border-radius:12px; overflow:hidden; box-shadow:0 10px 40px rgba(0,43,94,0.18);">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1740&auto=format&fit=crop" alt="Advanced R&D Laboratory" style="width:100%; display:block; border-radius:12px;">
+                    <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 24px; background:linear-gradient(transparent, rgba(0,20,60,0.85));">
+                        <img src="https://www.innopolis.or.kr/resources/images/mps/2025/main/intro-logo.svg" alt="INNOPOLIS" style="height:36px; filter:brightness(0) invert(1);">
+                        <p style="color:rgba(255,255,255,0.8); font-size:0.85rem; margin-top:6px;">Korea's Deep-Tech Innovation Hub, Daejeon</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
