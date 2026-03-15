@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daedeok Global TLO Alliance</title>
+    <title>Daedeok Global TLO Alliance (DGTA)</title>
     <style>
-        /* Base Styles & Color Palette */
         :root {
             --primary-blue: #002b5e;
             --accent-cyan: #00a3e0;
@@ -69,7 +68,7 @@
             color: var(--accent-cyan);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             background: linear-gradient(rgba(0, 43, 94, 0.85), rgba(0, 43, 94, 0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover;
             height: 70vh;
@@ -111,7 +110,7 @@
             background-color: #0081b3;
         }
 
-        /* Section Layouts */
+        /* Section */
         section {
             padding: 80px 5%;
         }
@@ -135,6 +134,57 @@
             transform: translateX(-50%);
         }
 
+        /* About */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 50px 5%;
+            flex-wrap: wrap;
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-item .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .stat-item .label {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
         /* Category Label */
         .category-label {
             font-size: 1.1rem;
@@ -147,23 +197,20 @@
             border-left: 4px solid var(--accent-cyan);
         }
 
-        /* TLO Atlas Cards (Interactive Scorecards) */
+        /* Cards */
         .atlas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .card {
             background: #fff;
             border-radius: 8px;
-            padding: 30px 20px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            overflow: hidden;
-            border-top: 4px solid var(--accent-cyan);
         }
 
         .card:hover {
@@ -171,20 +218,35 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
         .card h3 {
             color: var(--primary-blue);
-            margin-bottom: 10px;
-            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-size: 1.4rem;
         }
 
         .card .specialty {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
             font-weight: bold;
+            text-transform: uppercase;
         }
 
-        /* Hidden layer that appears on hover */
+        .card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         .card-overlay {
             position: absolute;
             top: 100%;
@@ -199,6 +261,7 @@
             align-items: center;
             padding: 20px;
             transition: top 0.3s ease;
+            text-align: center;
         }
 
         .card:hover .card-overlay {
@@ -213,36 +276,10 @@
         .card-overlay p {
             font-size: 0.9rem;
             margin-bottom: 15px;
+            color: #ddd;
         }
 
-        /* Stats Banner */
-        .stats-banner {
-            background-color: var(--primary-blue);
-            color: var(--text-light);
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            padding: 50px 5%;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-item .number {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-
-        .stat-item .label {
-            font-size: 0.95rem;
-            color: #ccc;
-            margin-top: 5px;
-        }
-
-        /* Global Tracks Section */
+        /* Global Tracks */
         .tracks-container {
             display: flex;
             gap: 30px;
@@ -256,17 +293,15 @@
             border-left: 5px solid var(--primary-blue);
             padding: 30px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 0 8px 8px 0;
         }
 
         .track-box h3 {
             color: var(--primary-blue);
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        /* Footer / Secretariat */
+        /* Footer */
         footer {
             background-color: var(--primary-blue);
             color: #ccc;
@@ -285,21 +320,22 @@
 <body>
 
     <header>
-        <a href="#" class="logo">Daedeok <span>Global TLO Alliance</span></a>
+        <a href="#" class="logo">DGTA <span>Daedeok Global TLO Alliance</span></a>
         <nav>
             <ul>
-                <li><a href="#about">The Alliance</a></li>
-                <li><a href="#atlas">TLO Atlas</a></li>
+                <li><a href="#about">About DGTA</a></li>
+                <li><a href="#atlas">Member TLOs</a></li>
                 <li><a href="#programs">Global Tracks</a></li>
-                <li><a href="#contact">Contact Secretariat</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
-        <h1>The Gateway to Korea's Deep-Tech</h1>
-        <p>Connecting 30+ Daedeok Innopolis Research Institutes and Universities with Global Innovation Clusters in North America, Europe, and Japan.</p>
-        <a href="#atlas" class="btn">Explore TLO Atlas</a>
+        <h1>Your Deep-Tech Gateway to Global Innovation</h1>
+        <p>Connecting 30+ Research Institutes and Universities in Daedeok Innopolis with Global Clusters in North America, Europe, and Japan.</p>
+        <a href="#atlas" class="btn">Explore Member TLOs</a>
     </section>
 
     <!-- Stats Banner -->
@@ -318,47 +354,73 @@
         </div>
         <div class="stat-item">
             <div class="number">30,000+</div>
-            <div class="label">PhD & Master Researchers</div>
+            <div class="label">PhD &amp; Master Researchers</div>
         </div>
     </div>
 
-    <section id="atlas">
-        <h2 class="section-title">Daedeok TLO Atlas</h2>
+    <!-- About -->
+    <section id="about">
+        <div class="about">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align:left; margin-bottom:30px;">About the Alliance</h2>
+                <p><strong>Daedeok Global TLO Alliance (DGTA)</strong> is Korea's official gateway for deep-tech technology transfer. Under the leadership of the Ministry of Science and ICT, DGTA unites the collective research excellence of over 30 leading research institutes and universities in Daedeok Innopolis into a single, cohesive global network.</p>
+                <br>
+                <p>Our mission is to provide a seamless, 'one-stop' platform that connects international partners with verified Korean deep technologies and ready-to-scale spin-offs. DGTA streamlines the process of global matching, licensing, and joint R&BD, creating sustainable innovation bridges with global clusters like Quebec and Grenoble.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://image.rocketpunch.com/company/41818/logo_1549441160.png?s=400x400" alt="Daedeok Innopolis">
+                <p style="margin-top:10px; font-weight:bold; color:var(--primary-blue);">Daedeok Innopolis Headquarters (Secretariat)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TLO Atlas -->
+    <section id="atlas" style="background-color: #e9f0f5;">
+        <h2 class="section-title">Member TLOs &amp; Global Focus</h2>
 
         <!-- ICT & Engineering -->
         <div class="category-label">ICT &amp; Engineering</div>
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>ETRI</h3>
-                <p class="specialty">AI, ICT &amp; Semiconductors</p>
-                <p>Korea's largest IT research institute with top-tier global patents in 6G, AI, and cybersecurity.</p>
+                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop" alt="ETRI Lab">
+                <div class="card-content">
+                    <h3>ETRI TLO</h3>
+                    <p class="specialty">AI, ICT &amp; Semiconductors</p>
+                    <p>Korea's largest IT research institute with top-tier global patents in 6G, AI, and cybersecurity.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Seeking joint R&BD partners for Next-Gen AI capabilities and Open-RAN tech.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KIMM</h3>
-                <p class="specialty">Machinery &amp; Materials</p>
-                <p>Advancing mechanical engineering R&D across manufacturing systems, robotics, and energy systems.</p>
+                <img src="https://images.unsplash.com/photo-1565688534255-cfd2c1c6c656?q=80&w=2070&auto=format&fit=crop" alt="KIMM Machinery">
+                <div class="card-content">
+                    <h3>KIMM TLO</h3>
+                    <p class="specialty">Machinery &amp; Materials</p>
+                    <p>Advancing mechanical engineering R&D in manufacturing systems, robotics, and energy systems.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Seeking international collaborators for advanced manufacturing and nano-convergence systems.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KISTI</h3>
-                <p class="specialty">Science &amp; Technology Information</p>
-                <p>National hub for S&T information services, supercomputing, and data-driven research support.</p>
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="KISTI Supercomputing">
+                <div class="card-content">
+                    <h3>KISTI TLO</h3>
+                    <p class="specialty">Science &amp; Technology Information</p>
+                    <p>National hub for S&T information services, supercomputing, and data-driven research support.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Open to partnerships in open-science infrastructure and high-performance computing.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -369,35 +431,44 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KIER</h3>
-                <p class="specialty">Energy Research</p>
-                <p>Leading hydrogen energy, renewable energy, and climate change technology R&D since 1977.</p>
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop" alt="KIER Solar Energy">
+                <div class="card-content">
+                    <h3>KIER TLO</h3>
+                    <p class="specialty">Energy Research</p>
+                    <p>Leading hydrogen energy, renewable energy, and climate change technology R&D since 1977.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
-                    <p>Actively seeking global partners for hydrogen production, solar cell, and CO₂ reduction tech.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <p>Seeking global partners for hydrogen production, solar cell, and CO₂ reduction tech.</p>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KRICT</h3>
-                <p class="specialty">Chemical Technology</p>
-                <p>Pioneering green chemistry, advanced materials, bio-based chemicals, and sustainable processes.</p>
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2070&auto=format&fit=crop" alt="KRICT Chemistry Lab">
+                <div class="card-content">
+                    <h3>KRICT TLO</h3>
+                    <p class="specialty">Chemical Technology</p>
+                    <p>Pioneering green chemistry, advanced materials, bio-based chemicals, and sustainable processes.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Looking for partners in circular economy, CO₂ utilization, and AI-driven chemical modeling.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KFE</h3>
-                <p class="specialty">Fusion Energy</p>
-                <p>Korea's national fusion energy research institute, home to the KSTAR superconducting tokamak.</p>
+                <img src="https://images.unsplash.com/photo-1620735692151-26a7e0748429?q=80&w=2068&auto=format&fit=crop" alt="KFE Fusion Plasma">
+                <div class="card-content">
+                    <h3>KFE TLO</h3>
+                    <p class="specialty">Fusion Energy</p>
+                    <p>Korea's national fusion energy institute, home to the KSTAR superconducting tokamak.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Collaborating with ITER and global fusion labs on plasma physics and fusion engineering.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -408,35 +479,44 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KAERI</h3>
-                <p class="specialty">Atomic Energy Research</p>
-                <p>Comprehensive nuclear R&D including HANARO reactor, radiation technology, and spent fuel.</p>
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop" alt="KAERI Nuclear Reactor">
+                <div class="card-content">
+                    <h3>KAERI TLO</h3>
+                    <p class="specialty">Atomic Energy Research</p>
+                    <p>Comprehensive nuclear R&D including the HANARO reactor, radiation technology, and spent fuel.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Seeking partners for next-gen nuclear safety systems and radiation medical applications.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KINS</h3>
-                <p class="specialty">Nuclear Safety</p>
-                <p>Korea's national nuclear safety regulatory research institute ensuring safe use of nuclear energy.</p>
+                <img src="https://images.unsplash.com/photo-1581093458791-9d15482442f6?q=80&w=2070&auto=format&fit=crop" alt="KINS Nuclear Safety">
+                <div class="card-content">
+                    <h3>KINS TLO</h3>
+                    <p class="specialty">Nuclear Safety</p>
+                    <p>Korea's national nuclear safety regulatory research institute ensuring safe use of nuclear energy.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Open to global collaboration on nuclear safety standards and risk assessment methodologies.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>ADD</h3>
-                <p class="specialty">Defense Development</p>
-                <p>South Korea's primary defense R&D agency developing missiles, unmanned systems, and naval tech.</p>
+                <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?q=80&w=2070&auto=format&fit=crop" alt="ADD Defense Tech">
+                <div class="card-content">
+                    <h3>ADD TLO</h3>
+                    <p class="specialty">Defense Development</p>
+                    <p>South Korea's primary defense R&D agency developing missiles, unmanned systems, and naval tech.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Exploring dual-use technology transfer in unmanned systems and advanced electronics.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -447,24 +527,30 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KARI</h3>
-                <p class="specialty">Aerospace &amp; Satellites</p>
-                <p>Leading Korea's space exploration, satellite development (KOMPSAT), and lunar programs (Danuri).</p>
+                <img src="https://images.unsplash.com/photo-1579313964436-b6e828a2a894?q=80&w=2072&auto=format&fit=crop" alt="KARI Satellite">
+                <div class="card-content">
+                    <h3>KARI TLO</h3>
+                    <p class="specialty">Aerospace &amp; Satellites</p>
+                    <p>Leading Korea's space exploration, satellite development (KOMPSAT), and lunar programs (Danuri).</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Recruiting aerospace component testing partners in Europe (Grenoble focus).</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KASI</h3>
-                <p class="specialty">Astronomy &amp; Space Science</p>
-                <p>National institute for optical astronomy, radio astronomy, and space observation instrument development.</p>
+                <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=2071&auto=format&fit=crop" alt="KASI Telescope">
+                <div class="card-content">
+                    <h3>KASI TLO</h3>
+                    <p class="specialty">Astronomy &amp; Space Science</p>
+                    <p>National institute for optical astronomy, radio astronomy, and space observation instruments.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Seeking international partners for joint observatory projects and space observation R&D.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -475,13 +561,16 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KIGAM</h3>
-                <p class="specialty">Critical Minerals &amp; Geo-Energy</p>
-                <p>Pioneering sustainable resource extraction, geohazard research, and CCS technologies.</p>
+                <img src="https://images.unsplash.com/photo-1562923761-c1f9d6511b7d?q=80&w=2070&auto=format&fit=crop" alt="KIGAM Minerals">
+                <div class="card-content">
+                    <h3>KIGAM TLO</h3>
+                    <p class="specialty">Critical Minerals &amp; Geo-Energy</p>
+                    <p>Driving sustainable resource extraction, geohazard research, and CCS technologies.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Expanding supply chain network in North America (Quebec) for critical minerals.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -492,35 +581,44 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KRISS</h3>
-                <p class="specialty">Precision Measurement &amp; Quantum</p>
-                <p>National measurement standards lab driving quantum metrology and optical lattice clock development.</p>
+                <img src="https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?q=80&w=2071&auto=format&fit=crop" alt="KRISS Quantum Lab">
+                <div class="card-content">
+                    <h3>KRISS TLO</h3>
+                    <p class="specialty">Precision Measurement &amp; Quantum</p>
+                    <p>National measurement standards lab driving quantum metrology and optical lattice clock development.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Looking for overseas testbeds for quantum sensor calibration and standards verification.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>IBS</h3>
-                <p class="specialty">Basic Science Research</p>
-                <p>~30 research centers spanning chemistry, life science, physics, and mathematics with the Aleph supercomputer.</p>
+                <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=1974&auto=format&fit=crop" alt="IBS Basic Science">
+                <div class="card-content">
+                    <h3>IBS TLO</h3>
+                    <p class="specialty">Basic Science Research</p>
+                    <p>~30 research centers spanning chemistry, life science, physics, and mathematics with the Aleph supercomputer.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Open to joint research in fundamental science, quantum physics, and interdisciplinary programs.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KBSI</h3>
-                <p class="specialty">Basic Science Instrumentation</p>
-                <p>Operates advanced scientific instruments and analytical facilities for the national research community.</p>
+                <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=2025&auto=format&fit=crop" alt="KBSI Instruments">
+                <div class="card-content">
+                    <h3>KBSI TLO</h3>
+                    <p class="specialty">Basic Science Instrumentation</p>
+                    <p>Operates advanced analytical instruments and facilities for the national research community.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Seeking international co-use and co-development of frontier scientific instrumentation.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -531,35 +629,44 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KRIBB</h3>
-                <p class="specialty">Bioscience &amp; Biotechnology</p>
-                <p>From genomics and drug discovery to agricultural biotech and regenerative medicine since 1985.</p>
+                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2080&auto=format&fit=crop" alt="KRIBB Biotech Lab">
+                <div class="card-content">
+                    <h3>KRIBB TLO</h3>
+                    <p class="specialty">Bioscience &amp; Biotechnology</p>
+                    <p>From genomics and drug discovery to agricultural biotech and regenerative medicine since 1985.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Actively seeking partners for next-gen drug discovery pipelines and biomaterial licensing.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KIOM</h3>
-                <p class="specialty">Oriental Medicine</p>
-                <p>Korea's national institute for traditional Korean medicine — herbal drug discovery and acupuncture science.</p>
+                <img src="https://images.unsplash.com/photo-1605652898744-88981e4b375b?q=80&w=1974&auto=format&fit=crop" alt="KIOM Herbal Medicine">
+                <div class="card-content">
+                    <h3>KIOM TLO</h3>
+                    <p class="specialty">Oriental Medicine &amp; Bio</p>
+                    <p>Standardizing Korean traditional medicine through modern biotechnology and natural product discovery.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
-                    <p>Seeking overseas partners for natural product commercialization and TKM clinical validation.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <p>Seeking global partners for natural product commercialization and TKM clinical validation.</p>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KIT</h3>
-                <p class="specialty">Toxicology Research</p>
-                <p>National toxicology institute providing safety assessments for chemicals, pharmaceuticals, and food.</p>
+                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=2087&auto=format&fit=crop" alt="KIT Toxicology">
+                <div class="card-content">
+                    <h3>KIT TLO</h3>
+                    <p class="specialty">Toxicology Research</p>
+                    <p>National toxicology institute providing safety assessments for chemicals, pharmaceuticals, and food.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Open to global partnerships in regulatory toxicology and alternative testing methods.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
@@ -570,74 +677,84 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <h3>KAIST</h3>
-                <p class="specialty">Science &amp; Engineering</p>
-                <p>Korea's top research university with TLO connecting global partners to deep-tech spinoffs and IP.</p>
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop" alt="KAIST Campus">
+                <div class="card-content">
+                    <h3>KAIST TLO</h3>
+                    <p class="specialty">Science &amp; Engineering</p>
+                    <p>Korea's top research university with TLO connecting global partners to deep-tech spinoffs and IP.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Over 7,000 patents available for licensing in AI, robotics, biotech, and nanotech.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>CNU</h3>
-                <p class="specialty">Comprehensive University</p>
-                <p>Chungnam National University with strengths in materials science, robotics, biotechnology, and medicine.</p>
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop" alt="CNU Campus">
+                <div class="card-content">
+                    <h3>CNU TLO</h3>
+                    <p class="specialty">Comprehensive University</p>
+                    <p>Chungnam National University with strengths in materials science, robotics, biotechnology, and medicine.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Seeking industry partners in advanced materials, environmental science, and biomedical engineering.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>UST</h3>
-                <p class="specialty">Graduate Science &amp; Technology</p>
-                <p>Unique consortium university where 100% of students conduct national R&D as student-researchers.</p>
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2071&auto=format&fit=crop" alt="UST Research">
+                <div class="card-content">
+                    <h3>UST TLO</h3>
+                    <p class="specialty">Graduate Science &amp; Technology</p>
+                    <p>Unique consortium university where 100% of students conduct national R&D as student-researchers.</p>
+                </div>
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Open to joint degree programs and international student-researcher exchange initiatives.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section id="programs" style="background-color: #e9f0f5;">
+    <!-- Global Tracks -->
+    <section id="programs">
         <h2 class="section-title">Global Expansion Tracks</h2>
         <div class="tracks-container">
 
             <div class="track-box">
                 <h3>🇨🇦 North America Track (Quebec)</h3>
-                <p>A specialized program linking Daedeok's deep-tech ventures with Quebec's innovation ecosystem. Features joint R&D matchmaking and supply chain integration with KOTRA.</p>
+                <p>A specialized program in partnership with KOTRA linking Daedeok's deep-tech ventures with Quebec's AI and critical minerals supply chain ecosystem. Features joint R&D matchmaking and supply chain integration.</p>
                 <br>
-                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">View Program Details →</a>
+                <a href="#" style="color:var(--accent-cyan); font-weight:bold; text-decoration:none;">View Quebec Details →</a>
             </div>
 
             <div class="track-box">
                 <h3>🇫🇷 Europe Track (Grenoble)</h3>
-                <p>Connecting Daedeok's aerospace and advanced manufacturing sectors with Grenoble's robust deep-tech infrastructure. Includes PoC support and local investment IR.</p>
+                <p>Connecting Daedeok's aerospace and advanced manufacturing sectors with Grenoble's robust deep-tech infrastructure. Includes PoC support and local investment IR opportunities.</p>
                 <br>
-                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">View Program Details →</a>
+                <a href="#" style="color:var(--accent-cyan); font-weight:bold; text-decoration:none;">View Grenoble Details →</a>
             </div>
 
             <div class="track-box">
                 <h3>🌍 Connect Day Portal (Inbound)</h3>
-                <p>Planning a visit to Korea? Request a customized itinerary to meet with specific Daedeok TLOs, research labs, and spin-off companies.</p>
+                <p>Planning a visit to Korea? Request a customized itinerary to meet with specific Daedeok TLOs, research labs, and spin-off companies through our one-stop scheduling service.</p>
                 <br>
-                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">Book a Visit →</a>
+                <a href="#" style="color:var(--accent-cyan); font-weight:bold; text-decoration:none;">Book a Visit →</a>
             </div>
 
         </div>
     </section>
 
     <footer id="contact">
-        <h3 class="hotline">Daedeok Global TLO Alliance Secretariat</h3>
+        <h3 class="hotline">Daedeok Global TLO Alliance (DGTA) Secretariat</h3>
         <p>Operated by the Official Secretariat Consortium</p>
-        <p style="margin-top: 15px; font-size: 0.9rem;">Email: global-tlo@daedeok-innopolis.kr | Hotline: +82-42-000-0000</p>
-        <div style="margin-top: 30px; border-top: 1px solid #444; padding-top: 15px; font-size: 0.8rem;">
+        <p style="margin-top:15px; font-size:0.9rem;">Email: global-tlo@daedeok-innopolis.kr | Hotline: +82-42-000-0000</p>
+        <div style="margin-top:30px; border-top:1px solid #444; padding-top:15px; font-size:0.8rem;">
             &copy; 2026 Daedeok Innopolis. All Rights Reserved.
         </div>
     </footer>
