@@ -662,6 +662,35 @@
             color: var(--text-light);
             margin-bottom: 10px;
         }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .stats-banner {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -729,10 +758,12 @@
     <section id="about">
         <div class="about">
             <div class="about-text">
-                <h2 class="section-title" style="text-align:left; margin-bottom:30px;">About the Alliance</h2>
-                <p><strong>Daedeok Global TLO Alliance (DGTA)</strong> is Korea's official gateway for deep-tech technology transfer. Under the leadership of the Ministry of Science and ICT, DGTA unites the collective research excellence of over 30 leading research institutes and universities in Daedeok Innopolis into a single, cohesive global network.</p>
+                <h2 class="section-title" style="text-align:left; margin-bottom:30px;">About Daedeok Innopolis &amp; The Alliance</h2>
+                <p>Established in 1973, <strong>Daedeok Innopolis</strong> is the heart of South Korea's scientific and technological innovation. Often referred to as the "Silicon Valley of Korea," it is the nation's premier R&amp;D cluster, home to government-funded research institutes, top-tier universities like KAIST, and thousands of deep-tech startups. For decades, Daedeok has been the core engine driving Korea's global advancements in aerospace, AI, biotechnology, quantum tech, and advanced materials.</p>
                 <br>
-                <p>Our mission is to provide a seamless, 'one-stop' platform that connects international partners with verified Korean deep technologies and ready-to-scale spin-offs. DGTA streamlines the process of global matching, licensing, and joint R&BD, creating sustainable innovation bridges with global clusters like Quebec and Grenoble.</p>
+                <p>Building upon this massive foundation, the <strong>Daedeok Global TLO Alliance (DGTA)</strong> serves as Korea's official gateway for deep-tech technology transfer. Under the leadership of the Ministry of Science and ICT, DGTA unites the collective research excellence of over 30 leading research institutes and universities in Daedeok Innopolis into a single, cohesive global network.</p>
+                <br>
+                <p>Our mission is to provide a seamless, 'one-stop' platform that connects international partners with verified Korean deep technologies and ready-to-scale spin-offs. DGTA streamlines the process of global matching, licensing, and joint R&amp;BD, creating sustainable innovation bridges with global clusters like Quebec and Grenoble.</p>
             </div>
             <div class="about-image">
                 <div style="position:relative; border-radius:12px; overflow:hidden; box-shadow:0 10px 40px rgba(0,43,94,0.18);">
