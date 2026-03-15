@@ -86,7 +86,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
             transform: scale(1.08);
             animation: heroZoom 12s ease-in-out infinite alternate;
         }
@@ -458,6 +458,113 @@
             margin-bottom: 15px;
         }
 
+        /* Contact Form */
+        .contact-section {
+            background: linear-gradient(135deg, #001a3a 0%, #002b5e 60%, #003f7a 100%);
+            padding: 80px 5%;
+        }
+
+        .contact-section .section-title {
+            color: var(--text-light);
+        }
+
+        .contact-section .section-title::after {
+            background-color: var(--accent-cyan);
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.65);
+            margin-top: -30px;
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            max-width: 720px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-form .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            transition: border-color 0.3s, background 0.3s;
+            outline: none;
+            width: 100%;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-cyan);
+            background: rgba(0,163,224,0.08);
+        }
+
+        .form-group select option {
+            background: #002b5e;
+            color: var(--text-light);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .form-submit {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-submit .btn {
+            padding: 14px 50px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-note {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+            margin-top: -6px;
+        }
+
+        @media (max-width: 600px) {
+            .contact-form { grid-template-columns: 1fr; }
+        }
+
         /* Footer */
         footer {
             background-color: var(--primary-blue);
@@ -483,7 +590,7 @@
                 <li><a href="#about">About DGTA</a></li>
                 <li><a href="#atlas">Member TLOs</a></li>
                 <li><a href="#programs">Global Tracks</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Inquiry</a></li>
             </ul>
         </nav>
     </header>
@@ -577,7 +684,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1565688534255-cfd2c1c6c656?q=80&w=2070&auto=format&fit=crop" alt="KIMM Machinery">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" alt="KIMM Machinery">
                 <div class="card-content">
                     <h3>KIMM TLO</h3>
                     <p class="specialty">Machinery &amp; Materials</p>
@@ -673,7 +780,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1581093458791-9d15482442f6?q=80&w=2070&auto=format&fit=crop" alt="KINS Nuclear Safety">
+                <img src="https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=2070&auto=format&fit=crop" alt="KINS Nuclear Safety">
                 <div class="card-content">
                     <h3>KINS TLO</h3>
                     <p class="specialty">Nuclear Safety</p>
@@ -707,7 +814,7 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1579313964436-b6e828a2a894?q=80&w=2072&auto=format&fit=crop" alt="KARI Satellite">
+                <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2070&auto=format&fit=crop" alt="KARI Satellite">
                 <div class="card-content">
                     <h3>KARI TLO</h3>
                     <p class="specialty">Aerospace &amp; Satellites</p>
@@ -761,7 +868,7 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?q=80&w=2071&auto=format&fit=crop" alt="KRISS Quantum Lab">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop" alt="KRISS Quantum Lab">
                 <div class="card-content">
                     <h3>KRISS TLO</h3>
                     <p class="specialty">Precision Measurement &amp; Quantum</p>
@@ -823,7 +930,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1605652898744-88981e4b375b?q=80&w=1974&auto=format&fit=crop" alt="KIOM Herbal Medicine">
+                <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=2070&auto=format&fit=crop" alt="KIOM Herbal Medicine">
                 <div class="card-content">
                     <h3>KIOM TLO</h3>
                     <p class="specialty">Oriental Medicine &amp; Bio</p>
@@ -930,7 +1037,60 @@
         </div>
     </section>
 
-    <footer id="contact">
+    <!-- Contact / Inquiry -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Send Us an Inquiry</h2>
+        <p class="contact-subtitle">Have a question about technology transfer, partnership opportunities, or visiting Daedeok? We'll get back to you shortly.</p>
+
+        <form class="contact-form" action="https://formspree.io/f/mwvrnqej" method="POST">
+
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="organization">Organization</label>
+                <input type="text" id="organization" name="organization" placeholder="Company / Institution">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="e.g. Canada, France, Japan">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="topic">Inquiry Topic</label>
+                <select id="topic" name="topic">
+                    <option value="" disabled selected>Select a topic</option>
+                    <option value="technology-transfer">Technology Transfer / Licensing</option>
+                    <option value="joint-rd">Joint R&D Collaboration</option>
+                    <option value="visit">Visit / Connect Day Request</option>
+                    <option value="global-track">Global Track (Quebec / Grenoble)</option>
+                    <option value="spinoff">Spin-off &amp; Startup Inquiry</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" placeholder="Please describe your inquiry in detail..." required></textarea>
+            </div>
+
+            <div class="form-submit">
+                <button type="submit" class="btn">Submit Inquiry</button>
+            </div>
+            <p class="form-note">We typically respond within 2–3 business days. Your information will not be shared with third parties.</p>
+
+        </form>
+    </section>
+
+    <footer id="footer">
         <h3 class="hotline">Daedeok Global TLO Alliance (DGTA) Secretariat</h3>
         <p>Operated by the Official Secretariat Consortium</p>
         <p style="margin-top:15px; font-size:0.9rem;">Email: global-tlo@daedeok-innopolis.kr | Hotline: +82-42-000-0000</p>
