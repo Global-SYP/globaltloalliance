@@ -163,17 +163,25 @@
         }
 
         .hero-eyebrow {
-            display: inline-block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--accent-cyan);
-            border: 1px solid rgba(0,163,224,0.5);
-            padding: 6px 18px;
-            border-radius: 20px;
-            margin-bottom: 24px;
-            background: rgba(0,163,224,0.08);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            margin-bottom: 28px;
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, #0080d0 100%);
+            box-shadow: 0 4px 24px rgba(0,191,255,0.45), 0 0 0 3px rgba(0,191,255,0.2);
+            animation: eyebrowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes eyebrowPulse {
+            0%, 100% { box-shadow: 0 4px 24px rgba(0,191,255,0.45), 0 0 0 3px rgba(0,191,255,0.2); }
+            50%       { box-shadow: 0 6px 36px rgba(0,191,255,0.70), 0 0 0 6px rgba(0,191,255,0.15); }
         }
 
         .hero h1 {
@@ -689,7 +697,7 @@
         <div class="hero-orb hero-orb-3"></div>
 
         <div class="hero-content">
-            <div class="hero-eyebrow">Daedeok Innopolis &nbsp;·&nbsp; Korea's Silicon Valley of Science</div>
+            <div class="hero-eyebrow">🔬 Daedeok Innopolis &nbsp;|&nbsp; Korea's Silicon Valley of Science</div>
             <h1>Your Deep-Tech Gateway<br>to <span>Global Innovation</span></h1>
             <p>Connecting 30+ world-class research institutes and universities in Daedeok Innopolis with global innovation clusters in North America, Europe, and Japan.</p>
             <div class="hero-cta">
