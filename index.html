@@ -86,7 +86,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1594224457860-02b3a73a1f66?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
             transform: scale(1.08);
             animation: heroZoom 12s ease-in-out infinite alternate;
         }
@@ -344,14 +344,40 @@
 
         /* Category Label */
         .category-label {
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 60px -5% 24px;
+            padding: 18px 5%;
+            background: var(--primary-blue);
+            color: #fff;
+            font-size: 1rem;
             font-weight: 700;
-            color: var(--primary-blue);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 50px 0 20px;
-            padding-left: 15px;
-            border-left: 4px solid var(--accent-cyan);
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .category-label::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .category-label .cat-icon {
+            font-size: 1.2rem;
+        }
+
+        .category-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, transparent 60%);
         }
 
         /* Cards */
@@ -700,7 +726,7 @@
             </div>
             <div class="about-image">
                 <div style="position:relative; border-radius:12px; overflow:hidden; box-shadow:0 10px 40px rgba(0,43,94,0.18);">
-                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1740&auto=format&fit=crop" alt="Researchers collaborating in lab" style="width:100%; display:block; border-radius:12px;">
+                    <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?q=80&w=1740&auto=format&fit=crop" alt="Korean researcher at work" style="width:100%; display:block; border-radius:12px;">
                     <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 24px; background:linear-gradient(transparent, rgba(0,20,60,0.85));">
                         <img src="https://www.innopolis.or.kr/resources/images/mps/2025/main/intro-logo.svg" alt="INNOPOLIS" style="height:36px; filter:brightness(0) invert(1);">
                         <p style="color:rgba(255,255,255,0.8); font-size:0.85rem; margin-top:6px;">Korea's Deep-Tech Innovation Hub, Daejeon</p>
@@ -715,7 +741,7 @@
         <h2 class="section-title">Member TLOs &amp; Global Focus</h2>
 
         <!-- ICT & Engineering -->
-        <div class="category-label">ICT &amp; Engineering</div>
+        <div class="category-label"><span class="cat-icon">💡</span> ICT &amp; Engineering</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -763,7 +789,7 @@
         </div>
 
         <!-- Energy & Environment -->
-        <div class="category-label">Energy &amp; Environment</div>
+        <div class="category-label"><span class="cat-icon">⚡</span> Energy &amp; Environment</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -811,7 +837,7 @@
         </div>
 
         <!-- Nuclear & Defense -->
-        <div class="category-label">Nuclear &amp; Defense</div>
+        <div class="category-label"><span class="cat-icon">☢️</span> Nuclear &amp; Defense</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -859,7 +885,7 @@
         </div>
 
         <!-- Aerospace & Space Sciences -->
-        <div class="category-label">Aerospace &amp; Space Sciences</div>
+        <div class="category-label"><span class="cat-icon">🚀</span> Aerospace &amp; Space Sciences</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -893,7 +919,7 @@
         </div>
 
         <!-- Geoscience & Resources -->
-        <div class="category-label">Geoscience &amp; Resources</div>
+        <div class="category-label"><span class="cat-icon">🌍</span> Geoscience &amp; Resources</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -913,7 +939,7 @@
         </div>
 
         <!-- Measurement, Standards & Basic Science -->
-        <div class="category-label">Measurement, Standards &amp; Basic Science</div>
+        <div class="category-label"><span class="cat-icon">🔬</span> Measurement, Standards &amp; Basic Science</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -961,7 +987,7 @@
         </div>
 
         <!-- Biotechnology & Medicine -->
-        <div class="category-label">Biotechnology &amp; Medicine</div>
+        <div class="category-label"><span class="cat-icon">🧬</span> Biotechnology &amp; Medicine</div>
         <div class="atlas-grid">
 
             <div class="card">
@@ -1009,7 +1035,7 @@
         </div>
 
         <!-- Universities -->
-        <div class="category-label">Universities</div>
+        <div class="category-label"><span class="cat-icon">🎓</span> Universities</div>
         <div class="atlas-grid">
 
             <!-- KAIST -->
@@ -1085,8 +1111,12 @@
 
             <!-- Hanbat National University -->
             <div class="card">
-                <div class="uni-logo-img" style="background:#fff; border-bottom:2px solid #f0f0f0;">
-                    <img src="https://www.hanbat.ac.kr/images/kor/common/2024/mark.svg" alt="Hanbat National University Logo">
+                <div class="uni-logo-text" style="background: linear-gradient(135deg, #003087 0%, #0055c8 100%); color:#fff; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(255,255,255,0.06);"></div>
+                    <div style="position:absolute; bottom:-30px; left:-10px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,0.04);"></div>
+                    <div class="uni-abbr" style="font-size:2rem; letter-spacing:2px;">HBNU</div>
+                    <div style="width:40px; height:2px; background:rgba(255,255,255,0.5); margin:8px 0;"></div>
+                    <div class="uni-name" style="opacity:0.9;">Hanbat National University<br>국립한밭대학교</div>
                 </div>
                 <div class="card-content">
                     <h3>Hanbat Univ. TLO</h3>
