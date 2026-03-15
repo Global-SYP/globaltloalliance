@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대덕 글로벌 TLO 얼라이언스</title>
+    <title>Daedeok Global TLO Alliance</title>
     <style>
         /* Base Styles & Color Palette */
         :root {
@@ -135,6 +135,18 @@
             transform: translateX(-50%);
         }
 
+        /* Category Label */
+        .category-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 50px 0 20px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-cyan);
+        }
+
         /* TLO Atlas Cards (Interactive Scorecards) */
         .atlas-grid {
             display: grid;
@@ -203,6 +215,33 @@
             margin-bottom: 15px;
         }
 
+        /* Stats Banner */
+        .stats-banner {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 50px 5%;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .stat-item .label {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
         /* Global Tracks Section */
         .tracks-container {
             display: flex;
@@ -246,68 +285,320 @@
 <body>
 
     <header>
-        <a href="#" class="logo">대덕 <span>글로벌 TLO 얼라이언스</span></a>
+        <a href="#" class="logo">Daedeok <span>Global TLO Alliance</span></a>
         <nav>
             <ul>
-                <li><a href="#about">얼라이언스 소개</a></li>
-                <li><a href="#atlas">TLO 지도</a></li>
-                <li><a href="#programs">글로벌 트랙</a></li>
-                <li><a href="#contact">사무국 연락</a></li>
+                <li><a href="#about">The Alliance</a></li>
+                <li><a href="#atlas">TLO Atlas</a></li>
+                <li><a href="#programs">Global Tracks</a></li>
+                <li><a href="#contact">Contact Secretariat</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>한국 딥테크의 관문</h1>
-        <p>대덕 이노폴리스 26개 이상의 연구기관 및 대학을 북미, 유럽, 일본의 글로벌 혁신 클러스터와 연결합니다.</p>
-        <a href="#atlas" class="btn">TLO 지도 탐색하기</a>
+        <h1>The Gateway to Korea's Deep-Tech</h1>
+        <p>Connecting 30+ Daedeok Innopolis Research Institutes and Universities with Global Innovation Clusters in North America, Europe, and Japan.</p>
+        <a href="#atlas" class="btn">Explore TLO Atlas</a>
     </section>
 
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+        <div class="stat-item">
+            <div class="number">30+</div>
+            <div class="label">Research Institutes</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">7,000+</div>
+            <div class="label">Patents per Year</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">2,300+</div>
+            <div class="label">Venture Companies</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">30,000+</div>
+            <div class="label">PhD & Master Researchers</div>
+        </div>
+    </div>
+
     <section id="atlas">
-        <h2 class="section-title">대덕 TLO 지도</h2>
+        <h2 class="section-title">Daedeok TLO Atlas</h2>
+
+        <!-- ICT & Engineering -->
+        <div class="category-label">ICT &amp; Engineering</div>
         <div class="atlas-grid">
-            
+
             <div class="card">
                 <h3>ETRI</h3>
-                <p class="specialty">AI · ICT · 반도체</p>
-                <p>세계 최고 수준의 특허를 보유한 국내 최대 IT 연구기관.</p>
+                <p class="specialty">AI, ICT &amp; Semiconductors</p>
+                <p>Korea's largest IT research institute with top-tier global patents in 6G, AI, and cybersecurity.</p>
                 <div class="card-overlay">
-                    <h4>글로벌 협력 포인트</h4>
-                    <p>차세대 AI 및 Open-RAN 기술 분야의 공동 R&BD 파트너를 모집 중입니다.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking joint R&BD partners for Next-Gen AI capabilities and Open-RAN tech.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
                 </div>
             </div>
+
+            <div class="card">
+                <h3>KIMM</h3>
+                <p class="specialty">Machinery &amp; Materials</p>
+                <p>Advancing mechanical engineering R&D across manufacturing systems, robotics, and energy systems.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking international collaborators for advanced manufacturing and nano-convergence systems.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KISTI</h3>
+                <p class="specialty">Science &amp; Technology Information</p>
+                <p>National hub for S&T information services, supercomputing, and data-driven research support.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Open to partnerships in open-science infrastructure and high-performance computing.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Energy & Environment -->
+        <div class="category-label">Energy &amp; Environment</div>
+        <div class="atlas-grid">
+
+            <div class="card">
+                <h3>KIER</h3>
+                <p class="specialty">Energy Research</p>
+                <p>Leading hydrogen energy, renewable energy, and climate change technology R&D since 1977.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Actively seeking global partners for hydrogen production, solar cell, and CO₂ reduction tech.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KRICT</h3>
+                <p class="specialty">Chemical Technology</p>
+                <p>Pioneering green chemistry, advanced materials, bio-based chemicals, and sustainable processes.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Looking for partners in circular economy, CO₂ utilization, and AI-driven chemical modeling.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KFE</h3>
+                <p class="specialty">Fusion Energy</p>
+                <p>Korea's national fusion energy research institute, home to the KSTAR superconducting tokamak.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Collaborating with ITER and global fusion labs on plasma physics and fusion engineering.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Nuclear & Defense -->
+        <div class="category-label">Nuclear &amp; Defense</div>
+        <div class="atlas-grid">
+
+            <div class="card">
+                <h3>KAERI</h3>
+                <p class="specialty">Atomic Energy Research</p>
+                <p>Comprehensive nuclear R&D including HANARO reactor, radiation technology, and spent fuel.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking partners for next-gen nuclear safety systems and radiation medical applications.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KINS</h3>
+                <p class="specialty">Nuclear Safety</p>
+                <p>Korea's national nuclear safety regulatory research institute ensuring safe use of nuclear energy.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Open to global collaboration on nuclear safety standards and risk assessment methodologies.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>ADD</h3>
+                <p class="specialty">Defense Development</p>
+                <p>South Korea's primary defense R&D agency developing missiles, unmanned systems, and naval tech.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Exploring dual-use technology transfer in unmanned systems and advanced electronics.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Aerospace & Space Sciences -->
+        <div class="category-label">Aerospace &amp; Space Sciences</div>
+        <div class="atlas-grid">
 
             <div class="card">
                 <h3>KARI</h3>
-                <p class="specialty">항공우주 · 위성</p>
-                <p>한국의 우주탐사 및 항공 기술 개발을 선도하는 기관.</p>
+                <p class="specialty">Aerospace &amp; Satellites</p>
+                <p>Leading Korea's space exploration, satellite development (KOMPSAT), and lunar programs (Danuri).</p>
                 <div class="card-overlay">
-                    <h4>글로벌 협력 포인트</h4>
-                    <p>유럽(그르노블) 지역 항공우주 부품 테스트 파트너를 모집 중입니다.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                    <h4>Global Hot-Point</h4>
+                    <p>Recruiting aerospace component testing partners in Europe (Grenoble focus).</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
                 </div>
             </div>
+
+            <div class="card">
+                <h3>KASI</h3>
+                <p class="specialty">Astronomy &amp; Space Science</p>
+                <p>National institute for optical astronomy, radio astronomy, and space observation instrument development.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking international partners for joint observatory projects and space observation R&D.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Geoscience & Resources -->
+        <div class="category-label">Geoscience &amp; Resources</div>
+        <div class="atlas-grid">
 
             <div class="card">
                 <h3>KIGAM</h3>
-                <p class="specialty">핵심광물 · 지질에너지</p>
-                <p>지속 가능한 자원 채굴 및 탄소포집저장(CCS) 기술을 선도.</p>
+                <p class="specialty">Critical Minerals &amp; Geo-Energy</p>
+                <p>Pioneering sustainable resource extraction, geohazard research, and CCS technologies.</p>
                 <div class="card-overlay">
-                    <h4>글로벌 협력 포인트</h4>
-                    <p>북미(퀘벡) 핵심광물 공급망 네트워크를 확장하고 있습니다.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                    <h4>Global Hot-Point</h4>
+                    <p>Expanding supply chain network in North America (Quebec) for critical minerals.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Measurement, Standards & Basic Science -->
+        <div class="category-label">Measurement, Standards &amp; Basic Science</div>
+        <div class="atlas-grid">
+
+            <div class="card">
+                <h3>KRISS</h3>
+                <p class="specialty">Precision Measurement &amp; Quantum</p>
+                <p>National measurement standards lab driving quantum metrology and optical lattice clock development.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Looking for overseas testbeds for quantum sensor calibration and standards verification.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3>KRISS</h3>
-                <p class="specialty">정밀측정 · 양자기술</p>
-                <p>양자 기술 준비 수준을 높이는 국가 측정 표준 기관.</p>
+                <h3>IBS</h3>
+                <p class="specialty">Basic Science Research</p>
+                <p>~30 research centers spanning chemistry, life science, physics, and mathematics with the Aleph supercomputer.</p>
                 <div class="card-overlay">
-                    <h4>글로벌 협력 포인트</h4>
-                    <p>양자센서 교정을 위한 해외 테스트베드 파트너를 찾고 있습니다.</p>
-                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                    <h4>Global Hot-Point</h4>
+                    <p>Open to joint research in fundamental science, quantum physics, and interdisciplinary programs.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KBSI</h3>
+                <p class="specialty">Basic Science Instrumentation</p>
+                <p>Operates advanced scientific instruments and analytical facilities for the national research community.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking international co-use and co-development of frontier scientific instrumentation.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Biotechnology & Medicine -->
+        <div class="category-label">Biotechnology &amp; Medicine</div>
+        <div class="atlas-grid">
+
+            <div class="card">
+                <h3>KRIBB</h3>
+                <p class="specialty">Bioscience &amp; Biotechnology</p>
+                <p>From genomics and drug discovery to agricultural biotech and regenerative medicine since 1985.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Actively seeking partners for next-gen drug discovery pipelines and biomaterial licensing.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KIOM</h3>
+                <p class="specialty">Oriental Medicine</p>
+                <p>Korea's national institute for traditional Korean medicine — herbal drug discovery and acupuncture science.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking overseas partners for natural product commercialization and TKM clinical validation.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KIT</h3>
+                <p class="specialty">Toxicology Research</p>
+                <p>National toxicology institute providing safety assessments for chemicals, pharmaceuticals, and food.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Open to global partnerships in regulatory toxicology and alternative testing methods.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Universities -->
+        <div class="category-label">Universities</div>
+        <div class="atlas-grid">
+
+            <div class="card">
+                <h3>KAIST</h3>
+                <p class="specialty">Science &amp; Engineering</p>
+                <p>Korea's top research university with TLO connecting global partners to deep-tech spinoffs and IP.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Over 7,000 patents available for licensing in AI, robotics, biotech, and nanotech.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>CNU</h3>
+                <p class="specialty">Comprehensive University</p>
+                <p>Chungnam National University with strengths in materials science, robotics, biotechnology, and medicine.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking industry partners in advanced materials, environmental science, and biomedical engineering.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>UST</h3>
+                <p class="specialty">Graduate Science &amp; Technology</p>
+                <p>Unique consortium university where 100% of students conduct national R&D as student-researchers.</p>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Open to joint degree programs and international student-researcher exchange initiatives.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Send Inquiry</button>
                 </div>
             </div>
 
@@ -315,39 +606,39 @@
     </section>
 
     <section id="programs" style="background-color: #e9f0f5;">
-        <h2 class="section-title">글로벌 진출 트랙</h2>
+        <h2 class="section-title">Global Expansion Tracks</h2>
         <div class="tracks-container">
 
             <div class="track-box">
-                <h3>🇨🇦 북미 트랙 (퀘벡)</h3>
-                <p>대덕 딥테크 벤처를 퀘벡 혁신 생태계와 연결하는 특화 프로그램. KOTRA와 연계한 공동 R&D 매칭 및 공급망 통합을 지원합니다.</p>
+                <h3>🇨🇦 North America Track (Quebec)</h3>
+                <p>A specialized program linking Daedeok's deep-tech ventures with Quebec's innovation ecosystem. Features joint R&D matchmaking and supply chain integration with KOTRA.</p>
                 <br>
-                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">프로그램 상세 보기 →</a>
+                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">View Program Details →</a>
             </div>
 
             <div class="track-box">
-                <h3>🇫🇷 유럽 트랙 (그르노블)</h3>
-                <p>대덕의 항공우주·첨단 제조 분야를 그르노블의 딥테크 인프라와 연결. PoC 지원 및 현지 투자 IR을 포함합니다.</p>
+                <h3>🇫🇷 Europe Track (Grenoble)</h3>
+                <p>Connecting Daedeok's aerospace and advanced manufacturing sectors with Grenoble's robust deep-tech infrastructure. Includes PoC support and local investment IR.</p>
                 <br>
-                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">프로그램 상세 보기 →</a>
+                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">View Program Details →</a>
             </div>
 
             <div class="track-box">
-                <h3>🌍 커넥트 데이 포털 (인바운드)</h3>
-                <p>한국 방문을 계획 중이신가요? 대덕 TLO, 연구소, 스핀오프 기업과의 맞춤형 방문 일정을 신청하세요.</p>
+                <h3>🌍 Connect Day Portal (Inbound)</h3>
+                <p>Planning a visit to Korea? Request a customized itinerary to meet with specific Daedeok TLOs, research labs, and spin-off companies.</p>
                 <br>
-                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">방문 신청하기 →</a>
+                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">Book a Visit →</a>
             </div>
 
         </div>
     </section>
 
     <footer id="contact">
-        <h3 class="hotline">대덕 글로벌 TLO 얼라이언스 사무국</h3>
-        <p>공식 사무국 컨소시엄 운영</p>
-        <p style="margin-top: 15px; font-size: 0.9rem;">이메일: global-tlo@daedeok-innopolis.kr | 대표전화: +82-42-000-0000</p>
+        <h3 class="hotline">Daedeok Global TLO Alliance Secretariat</h3>
+        <p>Operated by the Official Secretariat Consortium</p>
+        <p style="margin-top: 15px; font-size: 0.9rem;">Email: global-tlo@daedeok-innopolis.kr | Hotline: +82-42-000-0000</p>
         <div style="margin-top: 30px; border-top: 1px solid #444; padding-top: 15px; font-size: 0.8rem;">
-            &copy; 2026 대덕 이노폴리스. All Rights Reserved.
+            &copy; 2026 Daedeok Innopolis. All Rights Reserved.
         </div>
     </footer>
 
