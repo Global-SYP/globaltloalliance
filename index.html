@@ -86,7 +86,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1532094349884-543559059c0b?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
             transform: scale(1.08);
             animation: heroZoom 12s ease-in-out infinite alternate;
         }
@@ -565,6 +565,54 @@
             .contact-form { grid-template-columns: 1fr; }
         }
 
+        /* University Logo Cards */
+        .uni-logo-img {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: #fff;
+        }
+
+        .uni-logo-img img {
+            max-width: 100%;
+            max-height: 130px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* CSS-only logo for universities without accessible logo URLs */
+        .uni-logo-text {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .uni-abbr {
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .uni-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.4;
+            opacity: 0.75;
+        }
+
         /* Footer */
         footer {
             background-color: var(--primary-blue);
@@ -652,7 +700,7 @@
             </div>
             <div class="about-image">
                 <div style="position:relative; border-radius:12px; overflow:hidden; box-shadow:0 10px 40px rgba(0,43,94,0.18);">
-                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1740&auto=format&fit=crop" alt="Researcher at work" style="width:100%; display:block; border-radius:12px;">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1740&auto=format&fit=crop" alt="Researchers collaborating in lab" style="width:100%; display:block; border-radius:12px;">
                     <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 24px; background:linear-gradient(transparent, rgba(0,20,60,0.85));">
                         <img src="https://www.innopolis.or.kr/resources/images/mps/2025/main/intro-logo.svg" alt="INNOPOLIS" style="height:36px; filter:brightness(0) invert(1);">
                         <p style="color:rgba(255,255,255,0.8); font-size:0.85rem; margin-top:6px;">Korea's Deep-Tech Innovation Hub, Daejeon</p>
@@ -747,7 +795,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1620735692151-26a7e0748429?q=80&w=2068&auto=format&fit=crop" alt="KFE Fusion Plasma">
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop" alt="KFE Fusion Energy Plant">
                 <div class="card-content">
                     <h3>KFE TLO</h3>
                     <p class="specialty">Fusion Energy</p>
@@ -849,7 +897,7 @@
         <div class="atlas-grid">
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1562923761-c1f9d6511b7d?q=80&w=2070&auto=format&fit=crop" alt="KIGAM Minerals">
+                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop" alt="KIGAM Geology">
                 <div class="card-content">
                     <h3>KIGAM TLO</h3>
                     <p class="specialty">Critical Minerals &amp; Geo-Energy</p>
@@ -931,7 +979,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=2070&auto=format&fit=crop" alt="KIOM Herbal Medicine">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2070&auto=format&fit=crop" alt="KIOM Korean Traditional Medicine">
                 <div class="card-content">
                     <h3>KIOM TLO</h3>
                     <p class="specialty">Oriental Medicine &amp; Bio</p>
@@ -964,8 +1012,12 @@
         <div class="category-label">Universities</div>
         <div class="atlas-grid">
 
+            <!-- KAIST -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop" alt="KAIST Campus">
+                <div class="uni-logo-text" style="background:#3f0093; color:#fff;">
+                    <div class="uni-abbr">KAIST</div>
+                    <div class="uni-name">Korea Advanced Institute<br>of Science &amp; Technology</div>
+                </div>
                 <div class="card-content">
                     <h3>KAIST TLO</h3>
                     <p class="specialty">Science &amp; Engineering</p>
@@ -978,8 +1030,12 @@
                 </div>
             </div>
 
+            <!-- CNU -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop" alt="CNU Campus">
+                <div class="uni-logo-text" style="background:#00338B; color:#fff;">
+                    <div class="uni-abbr">CNU</div>
+                    <div class="uni-name">Chungnam National University<br>충남대학교</div>
+                </div>
                 <div class="card-content">
                     <h3>CNU TLO</h3>
                     <p class="specialty">Comprehensive University</p>
@@ -992,8 +1048,11 @@
                 </div>
             </div>
 
+            <!-- UST -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2071&auto=format&fit=crop" alt="UST Research">
+                <div class="uni-logo-img" style="background:#002b5e;">
+                    <img src="https://www.ust.ac.kr/template/A/images/flogo.png" alt="UST Logo">
+                </div>
                 <div class="card-content">
                     <h3>UST TLO</h3>
                     <p class="specialty">Graduate Science &amp; Technology</p>
@@ -1002,6 +1061,41 @@
                 <div class="card-overlay">
                     <h4>Global Hot-Point</h4>
                     <p>Open to joint degree programs and international student-researcher exchange initiatives.</p>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
+                </div>
+            </div>
+
+            <!-- Hannam University -->
+            <div class="card">
+                <div class="uni-logo-text" style="background:#9B1B30; color:#fff;">
+                    <div class="uni-abbr">HNU</div>
+                    <div class="uni-name">Hannam University<br>한남대학교</div>
+                </div>
+                <div class="card-content">
+                    <h3>Hannam Univ. TLO</h3>
+                    <p class="specialty">Humanities, Science &amp; Engineering</p>
+                    <p>Daejeon-based private university with active industry-academia collaboration in engineering, biotech, and chemistry.</p>
+                </div>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Seeking global partners in fine chemistry, materials, and convergence technology licensing.</p>
+                    <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
+                </div>
+            </div>
+
+            <!-- Hanbat National University -->
+            <div class="card">
+                <div class="uni-logo-img" style="background:#fff; border-bottom:2px solid #f0f0f0;">
+                    <img src="https://www.hanbat.ac.kr/images/kor/common/2024/mark.svg" alt="Hanbat National University Logo">
+                </div>
+                <div class="card-content">
+                    <h3>Hanbat Univ. TLO</h3>
+                    <p class="specialty">Engineering &amp; ICT</p>
+                    <p>National university at the heart of Daedeok Innopolis, specializing in engineering, IT, and applied sciences.</p>
+                </div>
+                <div class="card-overlay">
+                    <h4>Global Hot-Point</h4>
+                    <p>Open to joint R&D and licensing in smart manufacturing, embedded systems, and green energy.</p>
                     <button class="btn" style="padding:8px 20px; font-size:0.9rem;">Connect with TLO</button>
                 </div>
             </div>
