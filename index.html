@@ -6,10 +6,11 @@
     <title>Daedeok Global TLO Alliance (DGTA)</title>
     <style>
         :root {
-            --primary-blue: #002b5e;
-            --accent-cyan: #00a3e0;
-            --bg-light: #f4f7f6;
-            --text-dark: #333333;
+            --primary-blue: #0a3d7c;
+            --accent-cyan: #00bfff;
+            --accent-orange: #ff6b2b;
+            --bg-light: #f0f6ff;
+            --text-dark: #1a2a3a;
             --text-light: #ffffff;
         }
 
@@ -100,9 +101,9 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg,
-                rgba(0, 20, 60, 0.88) 0%,
-                rgba(0, 60, 100, 0.70) 50%,
-                rgba(0, 163, 224, 0.30) 100%);
+                rgba(0, 30, 80, 0.78) 0%,
+                rgba(0, 80, 140, 0.55) 50%,
+                rgba(0, 191, 255, 0.18) 100%);
         }
 
         /* Animated grid lines */
@@ -110,8 +111,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0,163,224,0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,163,224,0.07) 1px, transparent 1px);
+                linear-gradient(rgba(0,191,255,0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,191,255,0.12) 1px, transparent 1px);
             background-size: 60px 60px;
             animation: gridMove 20s linear infinite;
         }
@@ -283,8 +284,9 @@
         .section-title::after {
             content: '';
             width: 60px;
-            height: 3px;
-            background-color: var(--accent-cyan);
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
+            border-radius: 2px;
             position: absolute;
             bottom: -10px;
             left: 50%;
@@ -319,7 +321,7 @@
 
         /* Stats Banner */
         .stats-banner {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, #0a3d7c 0%, #0060b8 50%, #0a3d7c 100%);
             color: var(--text-light);
             display: flex;
             justify-content: center;
@@ -349,7 +351,7 @@
             gap: 14px;
             margin: 60px -5% 24px;
             padding: 18px 5%;
-            background: var(--primary-blue);
+            background: linear-gradient(90deg, #0a3d7c 0%, #0060b8 100%);
             color: #fff;
             font-size: 1rem;
             font-weight: 700;
@@ -389,16 +391,16 @@
 
         .card {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(10,61,124,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 18px 40px rgba(10,61,124,0.18);
         }
 
         .card img {
@@ -418,7 +420,7 @@
         }
 
         .card .specialty {
-            color: var(--accent-cyan);
+            color: var(--accent-orange);
             font-size: 0.85rem;
             margin-bottom: 12px;
             font-weight: bold;
@@ -473,10 +475,16 @@
             flex: 1;
             min-width: 300px;
             background: #fff;
-            border-left: 5px solid var(--primary-blue);
+            border-left: 5px solid var(--accent-cyan);
             padding: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 20px rgba(10,61,124,0.08);
+            border-radius: 0 10px 10px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .track-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(10,61,124,0.14);
         }
 
         .track-box h3 {
@@ -486,7 +494,7 @@
 
         /* Contact Form */
         .contact-section {
-            background: linear-gradient(135deg, #001a3a 0%, #002b5e 60%, #003f7a 100%);
+            background: linear-gradient(135deg, #0a3d7c 0%, #0060b8 50%, #0080d0 100%);
             padding: 80px 5%;
         }
 
@@ -641,8 +649,8 @@
 
         /* Footer */
         footer {
-            background-color: var(--primary-blue);
-            color: #ccc;
+            background: linear-gradient(135deg, #0a3d7c 0%, #0060b8 100%);
+            color: #cce8ff;
             text-align: center;
             padding: 40px 20px;
             border-top: 4px solid var(--accent-cyan);
@@ -738,7 +746,7 @@
     </section>
 
     <!-- TLO Atlas -->
-    <section id="atlas" style="background-color: #e9f0f5;">
+    <section id="atlas" style="background: linear-gradient(180deg, #e8f2ff 0%, #f0f6ff 100%);">
         <h2 class="section-title">Member TLOs &amp; Global Focus</h2>
 
         <!-- ICT & Engineering -->
@@ -1135,7 +1143,8 @@
     </section>
 
     <!-- Global Tracks -->
-    <section id="programs">
+    <section id="programs" style="background: linear-gradient(135deg, #e8f4ff 0%, #fff8f0 100%);">
+
         <h2 class="section-title">Global Expansion Tracks</h2>
         <div class="tracks-container">
 
