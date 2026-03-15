@@ -165,23 +165,24 @@
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 4px;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            color: #FFE400;
+            text-shadow: 0 0 20px rgba(255,228,0,0.7), 0 2px 8px rgba(0,0,0,0.5);
+            padding: 14px 32px;
+            border-radius: 6px;
             margin-bottom: 28px;
-            background: linear-gradient(90deg, var(--accent-cyan) 0%, #0080d0 100%);
-            box-shadow: 0 4px 24px rgba(0,191,255,0.45), 0 0 0 3px rgba(0,191,255,0.2);
-            animation: eyebrowPulse 3s ease-in-out infinite;
+            background: rgba(0,0,0,0.35);
+            border: 2px solid rgba(255,228,0,0.6);
+            box-shadow: 0 0 30px rgba(255,228,0,0.25);
+            animation: eyebrowPulse 2.5s ease-in-out infinite;
         }
 
         @keyframes eyebrowPulse {
-            0%, 100% { box-shadow: 0 4px 24px rgba(0,191,255,0.45), 0 0 0 3px rgba(0,191,255,0.2); }
-            50%       { box-shadow: 0 6px 36px rgba(0,191,255,0.70), 0 0 0 6px rgba(0,191,255,0.15); }
+            0%, 100% { text-shadow: 0 0 20px rgba(255,228,0,0.7), 0 2px 8px rgba(0,0,0,0.5); border-color: rgba(255,228,0,0.6); }
+            50%       { text-shadow: 0 0 36px rgba(255,228,0,1.0), 0 2px 8px rgba(0,0,0,0.5); border-color: rgba(255,228,0,1.0); }
         }
 
         .hero h1 {
