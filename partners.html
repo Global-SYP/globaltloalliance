@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Partners — DGTA</title>
+    <style>
+        :root {
+            --primary-blue: #002b5e;
+            --accent-cyan: #00a3e0;
+            --bg-light: #f4f7f6;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent-cyan); }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-cyan); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 52vh;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #001a3a 0%, #002b5e 60%, #004080 100%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,163,224,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,163,224,0.07) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to   { background-position: 60px 60px; }
+        }
+
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.2;
+        }
+        .hero-orb-1 { width:400px; height:400px; background:var(--accent-cyan); top:-120px; right:-80px; }
+        .hero-orb-2 { width:300px; height:300px; background:#0050a0; bottom:-80px; left:-60px; }
+
+        .hero-content { position: relative; z-index: 2; }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0,163,224,0.4);
+            padding: 5px 16px; border-radius: 20px;
+            margin-bottom: 20px;
+            background: rgba(0,163,224,0.07);
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
+        .hero h1 span { color: var(--accent-cyan); }
+        .hero p { font-size: 1rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.78); }
+
+        /* Section */
+        section { padding: 70px 5%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.9rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .section-title::after {
+            content: ''; width: 50px; height: 3px;
+            background: var(--accent-cyan);
+            position: absolute; bottom: -10px; left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-subtitle {
+            text-align: center; color: #888;
+            margin-top: 22px; margin-bottom: 55px;
+            font-size: 0.95rem;
+        }
+
+        /* Region labels */
+        .region-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 50px 0 24px;
+            padding: 14px 5%;
+            margin-left: -5%;
+            margin-right: -5%;
+            background: var(--primary-blue);
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        .region-label::before {
+            content: '';
+            width: 4px; height: 22px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+        .region-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, transparent 60%);
+        }
+
+        /* Partner Cards Grid */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .partner-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--accent-cyan);
+        }
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.13);
+        }
+
+        .partner-logo-area {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 32px;
+        }
+
+        .partner-logo-area img {
+            max-width: 100%;
+            max-height: 110px;
+            object-fit: contain;
+        }
+
+        /* CSS logo for partners without accessible logo */
+        .partner-logo-text {
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .partner-abbr {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .partner-name-sub {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .partner-body {
+            padding: 22px 24px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .partner-country {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        .partner-body h3 {
+            font-size: 1.15rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .partner-body p {
+            font-size: 0.88rem;
+            color: #666;
+            flex: 1;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .partner-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            padding: 8px 0;
+            border-top: 1px solid #f0f0f0;
+        }
+        .partner-link:hover { color: #0081b3; }
+
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-blue), #004080);
+            border-radius: 14px;
+            padding: 50px 40px;
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+        .cta-box h3 { font-size: 1.6rem; margin-bottom: 14px; }
+        .cta-box p { color: rgba(255,255,255,0.72); max-width: 560px; margin: 0 auto 28px; font-size: 0.95rem; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-cyan);
+            color: #fff;
+            border: none; border-radius: 4px;
+            font-size: 1rem; font-weight: bold;
+            text-decoration: none; cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #0081b3; }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: #ccc;
+            text-align: center;
+            padding: 36px 20px;
+            border-top: 4px solid var(--accent-cyan);
+        }
+        footer a { color: var(--accent-cyan); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">DGTA <span>Daedeok Global TLO Alliance</span></a>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">About DGTA</a></li>
+                <li><a href="index.html#atlas">Member TLOs</a></li>
+                <li><a href="index.html#programs">Global Tracks</a></li>
+                <li><a href="deeptech.html">Deep-Tech Spotlight</a></li>
+                <li><a href="partners.html" style="color:var(--accent-cyan);">Global Partners</a></li>
+                <li><a href="index.html#contact">Inquiry</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Worldwide Network &nbsp;·&nbsp; DGTA</div>
+            <h1>Global <span>Partner</span> Organizations</h1>
+            <p>Strategic alliances connecting Daedeok's deep-tech ecosystem with innovation hubs, government bodies, and industry leaders across North America, Europe, and Asia.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Our Global Partners</h2>
+        <p class="section-subtitle">Expanding Daedeok's reach through trusted international collaboration</p>
+
+        <!-- North America -->
+        <div class="region-label">🌎 North America</div>
+        <div class="partners-grid">
+
+            <!-- SYP -->
+            <div class="partner-card">
+                <div class="partner-logo-text" style="background: linear-gradient(135deg, #002b5e 0%, #004a99 100%); color:#fff;">
+                    <div class="partner-abbr">SYP</div>
+                    <div class="partner-name-sub">Startup &amp; IP Platform</div>
+                </div>
+                <div class="partner-body">
+                    <div class="partner-country">🇺🇸 USA</div>
+                    <h3>SYP Innovation Platform</h3>
+                    <p>A strategic innovation platform bridging Korean deep-tech startups with global markets. SYP provides IP strategy, tech commercialization consulting, and cross-border partnership facilitation for emerging companies from Daedeok Innopolis.</p>
+                    <a href="https://www.sypip.com" target="_blank" class="partner-link">
+                        Visit sypip.com →
+                    </a>
+                </div>
+            </div>
+
+            <!-- OCSC -->
+            <div class="partner-card">
+                <div class="partner-logo-area" style="background:#fff;">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5b64fd12697a98ab3d8f7ca4/1568064977605-NBF2AOY5FCX38Y7HA4EJ/OC+Startups+Council+1000.png"
+                         alt="Orange County Startup Council">
+                </div>
+                <div class="partner-body">
+                    <div class="partner-country">🇺🇸 USA · Orange County, California</div>
+                    <h3>Orange County Startup Council (OCSC)</h3>
+                    <p>The premier startup ecosystem in Southern California connecting entrepreneurs, investors, and innovators. OCSC serves as DGTA's key gateway to the US West Coast tech market, facilitating investor connections and market access for Daedeok-originated deep-tech ventures.</p>
+                    <a href="https://www.ocstartupcouncil.org" target="_blank" class="partner-link">
+                        Visit ocstartupcouncil.org →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Europe -->
+        <div class="region-label">🌍 Europe</div>
+        <div class="partners-grid">
+
+            <!-- La Rioja -->
+            <div class="partner-card">
+                <div class="partner-logo-text" style="background: linear-gradient(135deg, #c60b1e 0%, #ad1018 60%, #f1bf00 100%); color:#fff;">
+                    <div class="partner-abbr" style="font-size:1.6rem;">La Rioja</div>
+                    <div class="partner-name-sub">Gobierno de La Rioja<br>Spain</div>
+                </div>
+                <div class="partner-body">
+                    <div class="partner-country">🇪🇸 Spain · La Rioja Region</div>
+                    <h3>Government of La Rioja (Spain)</h3>
+                    <p>The autonomous regional government of La Rioja is a strategic European partner for DGTA, facilitating technology transfer agreements, joint R&D programs, and business development opportunities for Daedeok companies seeking entry into the Spanish and broader EU market.</p>
+                    <a href="https://www.larioja.org" target="_blank" class="partner-link">
+                        Visit larioja.org →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Asia & Japan -->
+        <div class="region-label">🌏 Asia — Japan</div>
+        <div class="partners-grid">
+
+            <!-- Salesforce Japan -->
+            <div class="partner-card">
+                <div class="partner-logo-text" style="background: linear-gradient(135deg, #00a1e0 0%, #0070d2 100%); color:#fff;">
+                    <div class="partner-abbr" style="font-size:1.4rem; letter-spacing:0;">Salesforce</div>
+                    <div class="partner-name-sub">Japan · セールスフォース</div>
+                </div>
+                <div class="partner-body">
+                    <div class="partner-country">🇯🇵 Japan · Tokyo</div>
+                    <h3>Salesforce Japan</h3>
+                    <p>Salesforce Japan, the world-leading CRM and cloud platform company, partners with DGTA to support Korean deep-tech startups in scaling their enterprise software solutions into the Japanese market. Joint programs include go-to-market strategy, ISV partnerships, and startup acceleration on the Salesforce platform.</p>
+                    <a href="https://www.salesforce.com/jp/" target="_blank" class="partner-link">
+                        Visit salesforce.com/jp →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box" style="margin-top:60px;">
+            <h3>Become a Global Partner</h3>
+            <p>Is your organization interested in connecting with Korea's most advanced research ecosystem? We welcome new strategic partnerships across all sectors and regions.</p>
+            <a href="index.html#contact" class="btn">Send Partnership Inquiry →</a>
+        </div>
+
+    </section>
+
+    <footer>
+        <p style="color:#fff; font-weight:bold; font-size:1rem; margin-bottom:8px;">Daedeok Global TLO Alliance (DGTA)</p>
+        <p>Email: global-tlo@daedeok-innopolis.kr | Hotline: +82-42-000-0000</p>
+        <div style="margin-top:20px; border-top:1px solid #444; padding-top:14px; font-size:0.8rem;">
+            &copy; 2026 Daedeok Innopolis. All Rights Reserved. &nbsp;·&nbsp;
+            <a href="index.html">← Back to Main</a>
+        </div>
+    </footer>
+
+</body>
+</html>
