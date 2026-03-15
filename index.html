@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대덕 글로벌 TLO 얼라이언스</title>
+    <style>
+        /* Base Styles & Color Palette */
+        :root {
+            --primary-blue: #002b5e;
+            --accent-cyan: #00a3e0;
+            --bg-light: #f4f7f6;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 43, 94, 0.85), rgba(0, 43, 94, 0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--accent-cyan);
+            color: var(--text-light);
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0081b3;
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-cyan);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* TLO Atlas Cards (Interactive Scorecards) */
+        .atlas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--accent-cyan);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .card .specialty {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Hidden layer that appears on hover */
+        .card-overlay {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 43, 94, 0.95);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: top 0.3s ease;
+        }
+
+        .card:hover .card-overlay {
+            top: 0;
+        }
+
+        .card-overlay h4 {
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        .card-overlay p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Global Tracks Section */
+        .tracks-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .track-box {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            border-left: 5px solid var(--primary-blue);
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .track-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer / Secretariat */
+        footer {
+            background-color: var(--primary-blue);
+            color: #ccc;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 4px solid var(--accent-cyan);
+        }
+
+        .hotline {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">대덕 <span>글로벌 TLO 얼라이언스</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">얼라이언스 소개</a></li>
+                <li><a href="#atlas">TLO 지도</a></li>
+                <li><a href="#programs">글로벌 트랙</a></li>
+                <li><a href="#contact">사무국 연락</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>한국 딥테크의 관문</h1>
+        <p>대덕 이노폴리스 26개 이상의 연구기관 및 대학을 북미, 유럽, 일본의 글로벌 혁신 클러스터와 연결합니다.</p>
+        <a href="#atlas" class="btn">TLO 지도 탐색하기</a>
+    </section>
+
+    <section id="atlas">
+        <h2 class="section-title">대덕 TLO 지도</h2>
+        <div class="atlas-grid">
+            
+            <div class="card">
+                <h3>ETRI</h3>
+                <p class="specialty">AI · ICT · 반도체</p>
+                <p>세계 최고 수준의 특허를 보유한 국내 최대 IT 연구기관.</p>
+                <div class="card-overlay">
+                    <h4>글로벌 협력 포인트</h4>
+                    <p>차세대 AI 및 Open-RAN 기술 분야의 공동 R&BD 파트너를 모집 중입니다.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KARI</h3>
+                <p class="specialty">항공우주 · 위성</p>
+                <p>한국의 우주탐사 및 항공 기술 개발을 선도하는 기관.</p>
+                <div class="card-overlay">
+                    <h4>글로벌 협력 포인트</h4>
+                    <p>유럽(그르노블) 지역 항공우주 부품 테스트 파트너를 모집 중입니다.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KIGAM</h3>
+                <p class="specialty">핵심광물 · 지질에너지</p>
+                <p>지속 가능한 자원 채굴 및 탄소포집저장(CCS) 기술을 선도.</p>
+                <div class="card-overlay">
+                    <h4>글로벌 협력 포인트</h4>
+                    <p>북미(퀘벡) 핵심광물 공급망 네트워크를 확장하고 있습니다.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>KRISS</h3>
+                <p class="specialty">정밀측정 · 양자기술</p>
+                <p>양자 기술 준비 수준을 높이는 국가 측정 표준 기관.</p>
+                <div class="card-overlay">
+                    <h4>글로벌 협력 포인트</h4>
+                    <p>양자센서 교정을 위한 해외 테스트베드 파트너를 찾고 있습니다.</p>
+                    <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">문의하기</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="programs" style="background-color: #e9f0f5;">
+        <h2 class="section-title">글로벌 진출 트랙</h2>
+        <div class="tracks-container">
+
+            <div class="track-box">
+                <h3>🇨🇦 북미 트랙 (퀘벡)</h3>
+                <p>대덕 딥테크 벤처를 퀘벡 혁신 생태계와 연결하는 특화 프로그램. KOTRA와 연계한 공동 R&D 매칭 및 공급망 통합을 지원합니다.</p>
+                <br>
+                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">프로그램 상세 보기 →</a>
+            </div>
+
+            <div class="track-box">
+                <h3>🇫🇷 유럽 트랙 (그르노블)</h3>
+                <p>대덕의 항공우주·첨단 제조 분야를 그르노블의 딥테크 인프라와 연결. PoC 지원 및 현지 투자 IR을 포함합니다.</p>
+                <br>
+                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">프로그램 상세 보기 →</a>
+            </div>
+
+            <div class="track-box">
+                <h3>🌍 커넥트 데이 포털 (인바운드)</h3>
+                <p>한국 방문을 계획 중이신가요? 대덕 TLO, 연구소, 스핀오프 기업과의 맞춤형 방문 일정을 신청하세요.</p>
+                <br>
+                <a href="#" style="color: var(--accent-cyan); font-weight: bold; text-decoration: none;">방문 신청하기 →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3 class="hotline">대덕 글로벌 TLO 얼라이언스 사무국</h3>
+        <p>공식 사무국 컨소시엄 운영</p>
+        <p style="margin-top: 15px; font-size: 0.9rem;">이메일: global-tlo@daedeok-innopolis.kr | 대표전화: +82-42-000-0000</p>
+        <div style="margin-top: 30px; border-top: 1px solid #444; padding-top: 15px; font-size: 0.8rem;">
+            &copy; 2026 대덕 이노폴리스. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
