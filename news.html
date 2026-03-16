@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 · 공지사항 — DGTA</title>
+    <style>
+        :root {
+            --primary-blue: #0a3d7c;
+            --accent-cyan: #00bfff;
+            --bg-light: #f0f6ff;
+            --text-dark: #1a2a3a;
+            --text-light: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #fff; text-decoration: none; white-space: nowrap; }
+        .logo span { color: var(--accent-cyan); }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-cyan); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 52vh;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #001a3a 0%, #0a3d7c 60%, #005baa 100%);
+        }
+        .hero-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(0,191,255,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,191,255,0.07) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to   { background-position: 60px 60px; }
+        }
+        .hero-orb {
+            position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.2;
+        }
+        .hero-orb-1 { width: 400px; height: 400px; background: var(--accent-cyan); top: -120px; right: -80px; }
+        .hero-orb-2 { width: 300px; height: 300px; background: #0050a0; bottom: -80px; left: -60px; }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0,191,255,0.4);
+            padding: 5px 16px; border-radius: 20px;
+            margin-bottom: 20px;
+            background: rgba(0,191,255,0.07);
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
+        .hero h1 span { color: var(--accent-cyan); }
+        .hero p { font-size: 1rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.78); }
+
+        /* Main section */
+        .main-section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+
+        /* Filter tabs */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        .filter-btn {
+            padding: 8px 22px;
+            border-radius: 30px;
+            border: 2px solid #d0e4f7;
+            background: #fff;
+            color: #556;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+        }
+        .filter-btn:hover { border-color: var(--accent-cyan); color: var(--primary-blue); }
+        .filter-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: #fff;
+        }
+
+        /* Post Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--accent-cyan);
+        }
+        .post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+        }
+
+        /* Card thumbnail */
+        .post-thumb {
+            height: 180px;
+            background: linear-gradient(135deg, #0a3d7c, #005baa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .post-thumb::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(10,61,124,0.4) 100%);
+        }
+
+        .post-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+
+        /* Category badge */
+        .post-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+        .badge-news      { background: #e8f4ff; color: #0a6bbf; }
+        .badge-overseas  { background: #e6f9f0; color: #0a8a4a; }
+        .badge-matching  { background: #fff4e5; color: #b85c00; }
+        .badge-recruit   { background: #f4e8ff; color: #7a00c8; }
+        .badge-notice    { background: #fff0f0; color: #c00020; }
+
+        .post-date {
+            font-size: 0.78rem;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .post-body h3 {
+            font-size: 1.05rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .post-body p {
+            font-size: 0.86rem;
+            color: #666;
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 18px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #aaa;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 14px;
+        }
+        .post-meta-left { display: flex; gap: 14px; }
+        .post-read-more {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.82rem;
+            transition: color 0.2s;
+        }
+        .post-read-more:hover { color: #0090cc; }
+
+        /* Deadline tag */
+        .deadline-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #c00020;
+            background: #fff0f0;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .deadline-tag.upcoming { color: #0a7c3a; background: #e6f9f0; }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #aaa;
+            display: none;
+        }
+        .empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+        .empty-state p { font-size: 0.95rem; }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-blue), #005baa);
+            border-radius: 14px;
+            padding: 50px 40px;
+            text-align: center;
+            color: #fff;
+            margin-top: 60px;
+        }
+        .cta-box h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .cta-box p { color: rgba(255,255,255,0.75); max-width: 540px; margin: 0 auto 28px; font-size: 0.95rem; }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-cyan);
+            color: #fff;
+            border: none; border-radius: 4px;
+            font-size: 1rem; font-weight: bold;
+            text-decoration: none; cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #009acc; }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a3d7c 0%, #0060b8 100%);
+            color: #cce8ff;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 4px solid var(--accent-cyan);
+        }
+        footer a { color: var(--accent-cyan); text-decoration: none; }
+        .hotline { font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .main-section { padding: 40px 5%; }
+            .cta-box { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">DGTA <span>Daedeok Global TLO Alliance</span></a>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">About DGTA</a></li>
+                <li><a href="index.html#atlas">Member TLOs</a></li>
+                <li><a href="index.html#programs">Global Tracks</a></li>
+                <li><a href="deeptech.html">Deep-Tech Spotlight</a></li>
+                <li><a href="partners.html">Global Partners</a></li>
+                <li><a href="news.html" style="color:var(--accent-cyan);">이벤트 · 공지</a></li>
+                <li><a href="index.html#contact">Inquiry</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">News &amp; Events &nbsp;·&nbsp; DGTA</div>
+            <h1>이벤트 &amp; <span>공지사항</span></h1>
+            <p>대덕 글로벌 TLO 얼라이언스의 최신 뉴스, 해외진출 행사, 매칭 프로그램, 기업 모집 공고를 확인하세요.</p>
+        </div>
+    </section>
+
+    <div class="main-section">
+
+        <!-- Filter tabs -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-cat="all">전체</button>
+            <button class="filter-btn" data-cat="news">📰 뉴스</button>
+            <button class="filter-btn" data-cat="overseas">✈️ 해외진출 행사</button>
+            <button class="filter-btn" data-cat="matching">🤝 매칭 행사</button>
+            <button class="filter-btn" data-cat="recruit">📋 기업 모집공고</button>
+            <button class="filter-btn" data-cat="notice">📢 공지사항</button>
+        </div>
+
+        <!-- Posts grid -->
+        <div class="posts-grid" id="postsGrid">
+
+            <!-- [SAMPLE] 기업 모집공고 -->
+            <div class="post-card" data-cat="recruit">
+                <div class="post-thumb" style="background: linear-gradient(135deg, #4a0080, #8800cc);">📋</div>
+                <div class="post-body">
+                    <span class="post-badge badge-recruit">📋 기업 모집공고</span>
+                    <div class="deadline-tag">⏰ 모집 중 · 마감 2026.04.15</div>
+                    <div class="post-date">2026.03.10</div>
+                    <h3>2026 DGTA 글로벌 IP 라이선싱 프로그램 참여 기업 모집</h3>
+                    <p>대덕 연구개발특구 내 딥테크 스타트업 및 중소기업을 대상으로 북미·유럽 글로벌 IP 라이선싱 프로그램 참여 기업을 모집합니다. 선정 기업에는 현지 TLO 네트워크 연계 및 컨설팅이 지원됩니다.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-left">
+                            <span>📁 DGTA 사무국</span>
+                        </div>
+                        <a href="index.html#contact" class="post-read-more">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [SAMPLE] 해외진출 행사 -->
+            <div class="post-card" data-cat="overseas">
+                <div class="post-thumb" style="background: linear-gradient(135deg, #004d20, #00873a);">✈️</div>
+                <div class="post-body">
+                    <span class="post-badge badge-overseas">✈️ 해외진출 행사</span>
+                    <div class="deadline-tag upcoming">✅ 참가 확정 · 2026.05.08</div>
+                    <div class="post-date">2026.03.05</div>
+                    <h3>DGTA × OCSC 한-미 딥테크 파트너십 데이 (Orange County)</h3>
+                    <p>캘리포니아 Orange County Startup Council과 공동 주관하는 한-미 딥테크 파트너십 행사. 대덕 6개 기관 기술이전 담당자와 미국 투자자·파트너 1:1 매칭 세션 포함.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-left">
+                            <span>📍 Orange County, USA</span>
+                        </div>
+                        <a href="index.html#contact" class="post-read-more">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [SAMPLE] 매칭 행사 -->
+            <div class="post-card" data-cat="matching">
+                <div class="post-thumb" style="background: linear-gradient(135deg, #7c3500, #cc5f00);">🤝</div>
+                <div class="post-body">
+                    <span class="post-badge badge-matching">🤝 매칭 행사</span>
+                    <div class="deadline-tag">⏰ 신청 중 · 마감 2026.04.01</div>
+                    <div class="post-date">2026.02.28</div>
+                    <h3>2026 대덕 기술이전 IR 데모데이 — 일본 파트너 매칭</h3>
+                    <p>Salesforce Japan 및 일본 현지 VC와 연계한 기술이전 IR 데모데이. ETRI, KAIST, KRIBB 등 8개 기관 기술패키지 소개 및 일본 파트너 매칭 세션. 참가 기관·기업을 모집합니다.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-left">
+                            <span>📍 온라인 + 서울</span>
+                        </div>
+                        <a href="index.html#contact" class="post-read-more">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [SAMPLE] 뉴스 -->
+            <div class="post-card" data-cat="news">
+                <div class="post-thumb" style="background: linear-gradient(135deg, #003d7c, #0060b8);">📰</div>
+                <div class="post-body">
+                    <span class="post-badge badge-news">📰 뉴스</span>
+                    <div class="post-date">2026.02.20</div>
+                    <h3>DGTA, 스페인 La Rioja 정부와 기술이전 협력 MOU 체결</h3>
+                    <p>DGTA는 스페인 라리오하 자치정부와 기술이전·공동 R&D 협력을 위한 MOU를 체결했습니다. 이번 협약을 통해 대덕 딥테크 기업의 EU 시장 진입 채널이 확대될 예정입니다.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-left">
+                            <span>📁 DGTA 사무국</span>
+                        </div>
+                        <a href="index.html#contact" class="post-read-more">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [SAMPLE] 기업 모집공고 2 -->
+            <div class="post-card" data-cat="recruit">
+                <div class="post-thumb" style="background: linear-gradient(135deg, #4a0080, #7a00b8);">📋</div>
+                <div class="post-body">
+                    <span class="post-badge badge-recruit">📋 기업 모집공고</span>
+                    <div class="deadline-tag">⏰ 모집 중 · 마감 2026.03.31</div>
+                    <div class="post-date">2026.02.15</div>
+                    <h3>대전창조경제혁신센터 × DGTA 글로벌 딥테크 액셀러레이팅 2기 모집</h3>
+                    <p>대전창조경제혁신센터와 DGTA가 공동 운영하는 글로벌 딥테크 액셀러레이팅 프로그램 2기 참여 기업을 모집합니다. 해외 TLO 네트워크 연계 및 글로벌 피칭 기회 제공.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-left">
+                            <span>📁 CCEI Daejeon · DGTA</span>
+                        </div>
+                        <a href="index.html#contact" class="post-read-more">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [SAMPLE] 공지사항 -->
+            <div class="post-card" data-cat="notice">
+                <div class="post-thumb" style="background: linear-gradient(135deg, #7c0010, #c00020);">📢</div>
+                <div class="post-body">
+                    <span class="post-badge badge-notice">📢 공지사항</span>
+                    <div class="post-date">2026.02.10</div>
+                    <h3>DGTA 공식 홈페이지 오픈 안내</h3>
+                    <p>대덕 글로벌 TLO 얼라이언스(DGTA) 공식 홈페이지가 오픈되었습니다. 회원 TLO 소개, 글로벌 파트너, 해외진출 트랙 등 주요 정보를 확인하실 수 있습니다.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-left">
+                            <span>📁 DGTA 사무국</span>
+                        </div>
+                        <a href="index.html#contact" class="post-read-more">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Empty state (shown when filter has no results) -->
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">📭</div>
+            <p>해당 카테고리의 게시물이 없습니다.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>행사 · 공고 등록 문의</h3>
+            <p>DGTA와 관련된 행사 공지, 기업 모집공고, 매칭 프로그램 등록을 원하시면 사무국으로 문의해 주세요.</p>
+            <a href="index.html#contact" class="btn">사무국에 문의하기 →</a>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+        <div class="gov-support" style="padding-bottom: 40px; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%;">
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 24px; font-weight: 500;">
+                A Public-Private Alliance Supported by
+            </p>
+            <div class="gov-logos" style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
+                <img src="https://www.msit.go.kr/images/common/logo_msit_w.png" alt="Ministry of Science and ICT" style="height: 45px; opacity: 0.9;">
+                <img src="https://www.innopolis.or.kr/resources/images/mps/2025/main/intro-logo.svg" alt="INNOPOLIS Foundation" style="height: 40px; filter: brightness(0) invert(1); opacity: 0.9;">
+            </div>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 15px;">
+                The Ministry of Science and ICT &amp; The INNOPOLIS Foundation of South Korea
+            </p>
+        </div>
+        <h3 class="hotline">Daedeok Global TLO Alliance (DGTA) Secretariat</h3>
+        <p>Operated by the Official Secretariat Consortium</p>
+        <p style="margin-top:15px; font-size:0.9rem;">Email: global-tlo@daedeok-innopolis.kr | Hotline: +82-42-000-0000</p>
+        <div style="margin-top:30px; padding-top:15px; font-size:0.8rem; color: rgba(255,255,255,0.6);">
+            &copy; 2026 Daedeok Innopolis. All Rights Reserved. &nbsp;·&nbsp;
+            <a href="index.html">← Back to Main</a>
+        </div>
+    </footer>
+
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.post-card');
+        const emptyState = document.getElementById('emptyState');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const cat = btn.dataset.cat;
+                let visible = 0;
+                cards.forEach(card => {
+                    if (cat === 'all' || card.dataset.cat === cat) {
+                        card.style.display = 'flex';
+                        visible++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                emptyState.style.display = visible === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>
